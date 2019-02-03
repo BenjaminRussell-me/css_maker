@@ -1,20 +1,21 @@
 <template>
   <div id="app">
-    <content />
+   <allcontent/>
   </div>
 </template>
 
 <script>
-import Content from "./components/content.vue";
+import allcontent from "./components/allcontent.vue";
 
 export default {
   name: "app",
   components: {
-    Content
+    allcontent
   }
 };
 </script>
 
 <style lang="scss">
+
 
 </style>
