@@ -1,7 +1,8 @@
 <template>
   <div class="content-grid">
-    <myinput/>
+    <myinput :bigthing="bigthing"></myinput>
     <myoutput/>
+    <div><button v-on:click="test">test</button></div>
   </div>
 </template>
 
@@ -11,22 +12,39 @@ import myoutput from "./myoutput.vue";
 export default {
   components: {
     myoutput,
-    myinput
+    myinput,
+  },
+
+  methods:{
+cartesian: function* cartesian(head, ...tail) {
+  let remainder = tail.length ? cartesian(...tail) : [[]];
+  for (let r of remainder) for (let h of head) yield [h, ...r];
+},
+test: function (){
+for (let c of this.cartesian([1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6])) {
+this.bigthing = c.concat(this.bigthing);
+}
+},
+
+
+
+  },
+  data: function () {
+    return {
+      bigthing: [],
+    }
+
   }
+
 };
 
 
 // Generate all combinations of array elements:
-//function* cartesian(head, ...tail) {
-//  let remainder = tail.length ? cartesian(...tail) : [[]];
-//  for (let r of remainder) for (let h of head) yield [h, ...r];
-//}
+
 
 
 // Example:
-//for (let c of cartesian([1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6])) {
-//  console.log(...c);
-//}
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

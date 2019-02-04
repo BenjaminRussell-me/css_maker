@@ -4,12 +4,19 @@
   <button v-on:click="click">click</button>
   {{amount}}
   <br>
-  {{cssarray}}
+  {{bigthing}}
 </div>
 </template>
 
 <script>
+import allcontent from './allcontent.vue'
+
 export default {
+      props: {
+    bigthing:{
+      type: Array,
+    }
+  },
     data: function (){
        return{
            arrayinput: '',
@@ -17,13 +24,14 @@ export default {
            amount: '',
            first: '',
            second: '',
-           third: ''
+           third: '',
+           tada: '',
        }
        },
        methods:{
            click: function () {
-               this.cssarray = this.arrayinput
-               this.amount = this.cssarray.length
+               
+               this.amount = this.bigthing.length
                
            }
        }
