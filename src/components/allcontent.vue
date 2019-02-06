@@ -1,7 +1,7 @@
 <template>
   <div class="content-grid">
-    <myinput :bigthing="bigthing"></myinput>
-    <myoutput/>
+    <myinput ></myinput>
+    <myoutput :bigthing="bigthing"/>
     <div><button v-on:click="test">test</button></div>
   </div>
 </template>
@@ -22,10 +22,10 @@ cartesian: function* cartesian(head, ...tail) {
 },
 test: function (){
 for (let c of this.cartesian([1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6])) {
-this.bigthing = c.concat(this.bigthing);
+console.log(c.length)
+this.bigthing.push(c)
 }
 },
-
 
 
   },
