@@ -1,8 +1,12 @@
 <template>
   <div class="content-grid">
-    <myinput ></myinput>
-    <myoutput :bigthing="bigthing"/>
+    <myinput 
+    @preclick="preclickdata = $event" @postclick="postclickdata = $event" 
+    ></myinput>
+    <myoutput @bigthing="bigthing" @preclickdata="preclickdata" @postclickdata="postclickdata" />
     <div><button v-on:click="test">test</button></div>
+    {{preclickdata}}
+    {{postclickdata}}
   </div>
 </template>
 
@@ -32,6 +36,8 @@ this.bigthing.push(c)
   data: function () {
     return {
       bigthing: [],
+      preclickdata: '',
+      postclickdata: '',
     }
 
   }

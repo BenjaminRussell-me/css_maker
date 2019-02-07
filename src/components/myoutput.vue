@@ -1,7 +1,13 @@
 <template>
  <div class="output-holder">
-     <button v-on:click="createCss">tada</button>
-   
+    
+     <div v-for="thing in bigthing" v-bind:key="thing" >
+      <div>{{preclickdata}}</div>
+  <span>{{ thing.toString().replace(",", "-").replace(",", "-")}}</span>
+     <div>{{postclickdata}}</div>
+  </div>
+
+
  </div>
  
 </template>
@@ -13,15 +19,26 @@ export default {
     props: {
     bigthing:{
       type: Array,
-    }
+    },
+  preclickdata:{
+    type: String,
+  },
+   postclickdata:{
+    type: String,
+  },
   },
 
-  methods: {
-      createCss: function () {
-            this.bigthing.forEach(element => {
-              console.log("hi")
-          });
+  data: function (){
+      return{
+
+
       }
+  },
+  methods: {
+      replace: function () {
+         thing
+      },
+
   }
     
 }

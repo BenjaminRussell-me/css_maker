@@ -1,10 +1,15 @@
 <template>
 <div>
-  <input type="text" name="input1" v-model="arrayinput">
-  <button v-on:click="click">click</button>
-  {{amount}}
+  <button v-on:click="away">away</button>
   <br>
-  {{bigthing}}
+  <input type="text" name="input1" v-model="prenumbers">
+  <br>
+  {{prenumbers}}
+  <br>
+  <input type="text" name="input2" v-model="postnumbers">
+  <br>
+  {{postnumbers}}
+
 </div>
 </template>
 
@@ -19,21 +24,16 @@ export default {
   },
     data: function (){
        return{
-           arrayinput: '',
-           cssarray: [],
-           amount: '',
-           first: '',
-           second: '',
-           third: '',
-           tada: '',
+        prenumbers: '',
+        postnumbers: '',
        }
        },
        methods:{
-           click: function () {
-               
-               this.amount = this.bigthing.length
-               
-           }
+           away: function () {
+              this.$emit('preclick', this.prenumbers)
+              this.$emit('postclick', this.postnumbers)
+              
+            }
        }
 }
 </script>
